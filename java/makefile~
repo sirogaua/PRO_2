@@ -1,0 +1,17 @@
+.PHONY: clean
+
+Lab2.class: Lab2.java Inp/Input.class Out/Output.class Targ/Target.class
+	javac Lab2.java
+Inp/Input.class: input_masiv.java
+	javac -d . input_masiv.java
+Out/Output.class: output_masiv.java
+	javac -d . output_masiv.java
+Targ/Target.class: target.java
+	javac -d . target.java
+Jar:
+	jar -cfm Lab2.jar manifest.txt Lab2.class Targ/Target.class Out/Output.class Inp/Input.class  
+
+clean:             
+	rm -rf *.class             
+	rm -r Inp Out Targ Lab2.jar
+
